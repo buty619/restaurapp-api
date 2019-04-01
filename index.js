@@ -10,7 +10,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/top_dev',
 mongoose.connection.on("error", function(e) { console.error(e); });
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(cors());
+app.use(cors()); 
 
 
 
