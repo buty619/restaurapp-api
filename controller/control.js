@@ -17,6 +17,7 @@ exports.create = async (req,res) =>{
 }
 
 exports.findOne = async (req,res) =>{
+  const id = req.params.id;
   try{
     const listofRest = await  Restaurant.findById(id);
     res.json(listofRest);
