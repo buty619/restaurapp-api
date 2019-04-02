@@ -15,7 +15,7 @@ app.use(cors());
 
 
 app.get("/restaurants",controller.findAll);
-app.get("restaurant/:id", controller.findOne);
+app.get("restaurants/:id", controller.findOne);
 app.post("/restaurants", controller.create);
 // app.patch('/restaurants/:id', controller.update);
 app.delete('/restaurants/:id', controller.delete);
