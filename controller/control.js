@@ -16,6 +16,15 @@ exports.create = async (req,res) =>{
   res.status(204).send({});
 }
 
+exports.findOne = async (req,res) =>{
+  try{
+    const listofRest = await  Restaurant.findById(id);
+    res.json(listofRest);
+  }catch(e){
+    console.error(e);
+  }
+}
+
 // exports.update = async (req,res) =>{
 //   const id = req.params.id;
 //   const Restaurant = await  Restaurant.findById(id);
