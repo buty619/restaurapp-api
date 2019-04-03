@@ -5,8 +5,8 @@ var multer = require('multer');
 var multerS3 = require('multer-s3');
 
 aws.config.update({
-  secretAccessKey: 'AWS_SECRET_ACCESS_KEY',
-  accessKeyId: 'AWS_ACCESS_KEY_ID',
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   region: 'us-east-2'
 });
 
@@ -15,7 +15,7 @@ s3 = new aws.S3();
 var upload = multer({
   storage: multerS3({
       s3: s3,
-      bucket: 'S3_BUCKET_NAME',
+      bucket: process.env.S3_BUCKET_NAME,
       contentType: function (req, file, cb) {
           cb(null, file.mimetype);
       },

@@ -5,7 +5,6 @@ const app = express();
 const cors = require("cors");
 const controller = require("./controller/control");
 const PORT = process.env.PORT  || 3000;
-const S3_BUCKET = process.env.S3_BUCKET;
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/top_dev', { useNewUrlParser: true });
 //mongoose.connect('mongodb+srv://CristianB:cristian1991@cluster0-vjfaj.mongodb.net/taskApi?retryWrites=true', { useNewUrlParser: true });
