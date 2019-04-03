@@ -3,46 +3,24 @@ const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
 const app = express();
 const cors = require("cors");
-const aws = require('aws-sdk');
 const controller = require("./controller/control");
-var multer = require('multer');
-var multerS3 = require('multer-s3');
 const PORT = process.env.PORT  || 3000;
 const S3_BUCKET = process.env.S3_BUCKET;
+
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/top_dev', { useNewUrlParser: true });
 //mongoose.connect('mongodb+srv://CristianB:cristian1991@cluster0-vjfaj.mongodb.net/taskApi?retryWrites=true', { useNewUrlParser: true });
 mongoose.connection.on("error", function(e) { console.error(e); });
+
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors()); 
 app.use(bodyParser.json());
 
-aws.config.update({
-    secretAccessKey: 'AWS_SECRET_ACCESS_KEY',
-    accessKeyId: 'AWS_ACCESS_KEY_ID',
-    region: 'us-east-2'
-});
- 
-s3 = new aws.S3({ /* ... */ }) 
 
-var upload = multer({
-    storage: multerS3({
-        s3: s3,
-        bucket: 'restaurappimg',
-        metadata: function (req, file, cb) {
-            cb(null, {fieldName: file.fieldname});
-        },
-        key: function (req, file, cb) {
-            console.log(file);
-            cb(null, file.originalname); //use Date.now() for unique file keys
-        }
-    })
-});
 
-app.post('/upload', upload.array('photos', 3), function(req, res, next) {
-    console.log("entroooo");
-    res.send('Successfully uploaded ' + req.files.length + ' files!')
-})
+
+
+app.post('/upload', controller.uploadimg);
 
 app.get("/restaurants",controller.findAll);
 app.get("/restaurants/:id", controller.findOne);
