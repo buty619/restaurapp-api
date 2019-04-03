@@ -33,7 +33,6 @@ var upload = multer({
             cb(null, {fieldName: file.fieldname});
         },
         key: function (req, file, cb) {
-            console.log("entroooo");
             console.log(file);
             cb(null, file.originalname); //use Date.now() for unique file keys
         }
@@ -41,6 +40,7 @@ var upload = multer({
 });
 
 app.post('/upload', upload.array('photos', 3), function(req, res, next) {
+    console.log("entroooo");
     res.send('Successfully uploaded ' + req.files.length + ' files!')
 })
 
