@@ -40,7 +40,7 @@ exports.findOne = async (req,res) =>{
 //   }
 // }
 
-exports.delete = async (req,res) =>{
+exports.delete = async (req,res,next) =>{
   const id = req.params.id;
   const restaurant = await  Restaurant.findById(id);
   try{
