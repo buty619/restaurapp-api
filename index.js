@@ -29,6 +29,9 @@ var upload = multer({
     storage: multerS3({
         s3: s3,
         bucket: 'restaurappimg',
+        metadata: function (req, file, cb) {
+            cb(null, {fieldName: file.fieldname});
+        },
         key: function (req, file, cb) {
             console.log("entroooo");
             console.log(file);
@@ -37,9 +40,9 @@ var upload = multer({
     })
 });
 
-app.post('/upload', upload.array('upl',0),  (req, res, next) => {
-    res.send("Uploaded!");
-});
+app.post('/upload', upload.array('photos', 3), function(req, res, next) {
+    res.send('Successfully uploaded ' + req.files.length + ' files!')
+})
 
 app.get("/restaurants",controller.findAll);
 app.get("/restaurants/:id", controller.findOne);
