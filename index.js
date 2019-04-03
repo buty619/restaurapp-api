@@ -20,23 +20,24 @@ app.use(bodyParser.json());
 aws.config.update({
     secretAccessKey: 'AWS_SECRET_ACCESS_KEY',
     accessKeyId: 'AWS_ACCESS_KEY_ID',
-    region: 'us-east-1'
+    region: 'us-east-2'
 });
-
-s3 = new aws.S3();
+ 
+const s3 = new aws.S3();
 
 var upload = multer({
     storage: multerS3({
         s3: s3,
         bucket: 'restaurappimg',
         key: function (req, file, cb) {
+            console.log("entroooo");
             console.log(file);
             cb(null, file.originalname); //use Date.now() for unique file keys
         }
     })
 });
 
-app.post('/upload', upload.array('upl',1), function (req, res, next) {
+app.post('/upload', upload.array('upl',0),  (req, res, next) => {
     res.send("Uploaded!");
 });
 
