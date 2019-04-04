@@ -6,7 +6,7 @@ app.use(cookieSession({secret:"Shh! It's a secret"}));
 const controller = require("./controller/control");
 //const registrations = require("./controller/registrations");
 //const session = require("./controller/session");
-const middlewares= require('./middlewares');
+//const middlewares= require('./middlewares');
 
 router.post('/upload', controller.uploadimg);
 
