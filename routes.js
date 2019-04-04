@@ -26,4 +26,4 @@ router.post("/restaurants", restManage.create);
 // app.patch('/restaurants/:id', controller.update);
 //router.delete('/restaurants/:id', restManage.delete);
 
-module.exports = router;
+module.exports = router; 
