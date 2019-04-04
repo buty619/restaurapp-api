@@ -5,7 +5,7 @@ const cookieSession = require('cookie-session');
 app.use(cookieSession({secret:"Shh! It's a secret"}));
 const restManage = require("./controller/restManage");
 const registrations = require("./controller/registrations");
-const session = require("./controller/session");
+//const session = require("./controller/session");
 //const middlewares= require('./middlewares');
 
 // ------   registration  -------  //
@@ -14,9 +14,9 @@ router.post("/register",registrations.create);
 //router.get("/twitter/callback", registrations.oauthcall);
 
 // ------   Session  -------  //
-router.get("/logIn", session.new);
-router.post("/logIn", session.create);
-router.get("/logOut", session.logOut);
+// router.get("/logIn", session.new);
+// router.post("/logIn", session.create);
+// router.get("/logOut", session.logOut);
 
 // ------   restaurant manage -------  //
 router.post('/upload', restManage.uploadImg);
