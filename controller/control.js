@@ -29,7 +29,7 @@ var upload = multer({
 
 const singleUpload = upload.single('image');
 
-exports.uploadimg = function(req, res) {  
+exports.uploadImg = function(req, res) {  
   singleUpload(req,res, (err) =>{
       if (err) return console.error(err);
       return res.json({'imageUrl':req.file.location});
@@ -75,15 +75,15 @@ exports.findOne = async (req,res) =>{
 //   }
 // }
 
-exports.delete = async (req,res,next) =>{
-  const id = req.params.id;
-  const restaurant = await  Restaurant.findById(id);
-  try{
-    restaurant.remove(function(err) {
-      if (err) return console.error(err);
-    });  
-    res.status(204).send({});
-  }catch(e){
-    return next(e);
-  }
-}
+// exports.delete = async (req,res,next) =>{
+//   const id = req.params.id;
+//   const restaurant = await  Restaurant.findById(id);
+//   try{
+//     restaurant.remove(function(err) {
+//       if (err) return console.error(err);
+//     });  
+//     res.status(204).send({});
+//   }catch(e){
+//     return next(e);
+//   }
+// }

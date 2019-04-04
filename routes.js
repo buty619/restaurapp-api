@@ -8,7 +8,7 @@ const controller = require("./controller/control");
 //const session = require("./controller/session");
 //const middlewares= require('./middlewares');
 
-router.post('/upload', controller.uploadimg);
+router.post('/upload', controller.uploadImg);
 
 router.get("/restaurants",controller.findAll);
 router.get("/restaurants/:id", controller.findOne);

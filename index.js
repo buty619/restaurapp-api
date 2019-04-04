@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const path = require("path");
 const app = express();
 const cors = require("cors");
-const controller = require("./controller/control");
 const cookieSession = require('cookie-session');
 const routes= require('./routes');
 const PORT = process.env.PORT  || 3000;
