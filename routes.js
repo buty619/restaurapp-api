@@ -14,6 +14,6 @@ router.get("/restaurants",restManage.findAll);
 router.get("/restaurants/:id", restManage.findOne);
 router.post("/restaurants", restManage.create);
 // app.patch('/restaurants/:id', controller.update);
-router.delete('/restaurants/:id', restManage.delete);
+//router.delete('/restaurants/:id', restManage.delete);
 
 module.exports = router;
