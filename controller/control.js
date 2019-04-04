@@ -21,23 +21,18 @@ var upload = multer({
       },
       key: function (req, file, cb) {
           console.log(file);
-          cb(null, Date.now().toString()); //use Date.now() for unique file keys
+          cb(null, Date.now().toString());
       }
   })
 });
 
-const singleUpload = upload.single('image'); //upload.array('photos', 3) tener encuenta el nombre "photos" o image
+const singleUpload = upload.single('image');
 
 exports.uploadimg = function(req, res) {  
-  //console.log(req.file);
   singleUpload(req,res, (err) =>{
       if (err) return console.error(err);
       return res.json({'imageUrl':req.file.location});
   });
-  // const file = req.file;
-  // console.log(file);
-  // res.send('Successfully uploaded ' + req.files.length + ' files!');
-  // return res.json({'imageUrl': req.file.location});
 }
 
 exports.findAll = async (req,res) =>{

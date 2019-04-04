@@ -5,7 +5,10 @@ var restauratSchema = mongoose.Schema({
   category: String,
   direction: String,
   description: String,
-  fav:Boolean
+  url1: String,
+  url2: String,
+  url3: String,
+  fav:  Boolean
 });
 
 module.exports = mongoose.model("Restaurant", restauratSchema);
