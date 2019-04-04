@@ -14,6 +14,7 @@ exports.create = (req,res) => {
       }
       console.log("usuario generado");
     });
+    res.status(204).send({});
 }
 
 
