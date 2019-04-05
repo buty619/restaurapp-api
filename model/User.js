@@ -7,9 +7,19 @@ var userSchema = mongoose.Schema({
   nickname:String
 });
 
-userSchema.statics.authenticate = async (email, password) => {
+userSchema.statics.authenticate = async (auth, password) => {
   // buscamos el usuario utilizando el email
-  const user = await mongoose.model("User").findOne({ email: email });  
+  const useremail = await mongoose.model("User").findOne({ email: auth });
+  const usernick = await mongoose.model("User").findOne({ nickname: auth });
+ 
+  if(useremail){
+    user = useremail;
+  }else if(usernick){
+    user = usernick;
+  }else{
+    user = null;
+  }
+
   if (user) {   
     // si existe comparamos la contraseña
     return new Promise((resolve, reject) => {
