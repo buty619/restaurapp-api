@@ -8,11 +8,9 @@ exports.create =  async function(req, res, next) {
     const user = await User.authenticate(auth, password);
     if (user) {
       req.session.userId = user._id;
-      console.log(req.session);
-      console.log(req.session.userId);
       res.status(204).send({});
     } else {
-        res.status(400).send({});
+        res.status(401).send({});
     }
   } catch (e) {
     return next(e);
