@@ -5,7 +5,7 @@ const cookieSession = require('cookie-session');
 app.use(cookieSession({secret:"Shh! It's a secret"}));
 const restManage = require("./controller/restManage");
 const registrations = require("./controller/registrations");
-//const session = require("./controller/session");
+const session = require("./controller/session");
 //const middlewares= require('./middlewares');
 
 // ------   registration  -------  //
