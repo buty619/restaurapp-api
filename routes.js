@@ -14,8 +14,7 @@ router.post("/register",registrations.create);
 //router.get("/twitter/callback", registrations.oauthcall);
 
 // ------   Session  -------  //
-// router.get("/logIn", session.new);
-// router.post("/logIn", session.create);
+router.post("/logIn", session.create);
 // router.get("/logOut", session.logOut);
 
 // ------   restaurant manage -------  //
