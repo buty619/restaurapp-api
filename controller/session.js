@@ -17,8 +17,8 @@ exports.create =  async function(req, res, next) {
     } else {
       res.status(401).send({});
     }
-  } catch (e) {
-    return next(e);
+  } catch (err) {
+    res.status(400).send({ error: 'Authentication failed.' });
   }
 }
 
