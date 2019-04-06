@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const path = require("path");
 const app = express();
 const cors = require("cors");
-const header = require("header")
 const cookieSession = require('cookie-session');
 const routes= require('./routes');
 const PORT = process.env.PORT  || 3000;
@@ -13,14 +12,12 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/top_dev',
 //mongoose.connect('mongodb+srv://CristianB:cristian1991@cluster0-vjfaj.mongodb.net/taskApi?retryWrites=true', { useNewUrlParser: true });
 mongoose.connection.on("error", function(e) { console.error(e); });
 
-header("Access-Control-Allow-Origin: http://localhost:3000/");
-header("Access-Control-Allow-Credentials: true");
-header("Access-Control-Allow-Methods: GET, POST");
-header("Access-Control-Allow-Headers: Content-Type, *");
-
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(cors()); 
+app.use(cors({
+  origin: 'http://localhost:3000', //ruta desde donde se hacen las peticiones
+  credentials: true
+})); 
 app.use(bodyParser.json());
 app.use(cookieSession({secret:"Shh! It's a secret"}));
 
