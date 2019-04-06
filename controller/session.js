@@ -12,7 +12,7 @@ exports.create =  async function(req, res, next) {
       //console.log(session.userId);
       //res.cookie("restaurappCookie",user._id,{  domain: '.restaurapp.com', httpOnly: false}).status(204).send({});
       //res.status(204).send(req.session.userId);
-      res.status(204).send(cookieSession({secret:"Shh! It's a secret"}));
+      res.status(204).send(user._id);
       //res.session.userId;
     } else {
       res.status(401).send({});
