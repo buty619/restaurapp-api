@@ -8,8 +8,8 @@ exports.create =  async function(req, res, next) {
     const user = await User.authenticate(auth, password);
     if (user) {
       req.session.userId = user._id;
-      console.log(session.userId);
-      res.cookie("restaurappCookie",req.session.userId);
+      //console.log(session.userId);
+      res.cookie("restaurappCookie",user._id);
       //res.status(204).send(req.session.userId);
       //res.status(204).send({});
       //res.session.userId;
