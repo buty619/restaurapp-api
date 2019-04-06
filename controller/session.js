@@ -11,7 +11,7 @@ exports.create =  async function(req, res, next) {
       //console.log(session.userId);
       res.cookie("restaurappCookie",user._id,{ maxAge: 900000, httpOnly: false});
       //res.status(204).send(req.session.userId);
-      //res.status(204).send({});
+      res.status(204).send({});
       //res.session.userId;
     } else {
       res.status(401).send({});
