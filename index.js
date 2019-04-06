@@ -15,7 +15,7 @@ mongoose.connection.on("error", function(e) { console.error(e); });
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors({
-  //origin: 'http://localhost:3000', //ruta desde donde se hacen las peticiones
+  origin: 'http://localhost:3000', //ruta desde donde se hacen las peticiones
   credentials: true
 })); 
 app.use(bodyParser.json());
