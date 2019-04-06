@@ -9,7 +9,7 @@ exports.create =  async function(req, res, next) {
     const user = await User.authenticate(auth, password);
     if (user) {
       req.session.userId = user._id;
-      res.cookie("restaurappCookie",user._id,{  domain: '.restaurapp.com', httpOnly: false});
+      //res.cookie("restaurappCookie",user._id,{  domain: '.restaurapp.com', httpOnly: false});
       res.status(204).send({});
     } else {
       res.status(401).send({});
