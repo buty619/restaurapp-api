@@ -9,7 +9,8 @@ exports.create =  async function(req, res, next) {
     if (user) {
       req.session.userId = user._id;
       //res.cookie(req.session.userId);
-      res.status(204).send(req.session.userId);
+      //res.status(204).send(req.session.userId);
+      res.status(204).send({});
     } else {
       res.status(401).send({});
     }
