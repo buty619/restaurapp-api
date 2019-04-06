@@ -12,6 +12,11 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/top_dev',
 //mongoose.connect('mongodb+srv://CristianB:cristian1991@cluster0-vjfaj.mongodb.net/taskApi?retryWrites=true', { useNewUrlParser: true });
 mongoose.connection.on("error", function(e) { console.error(e); });
 
+header("Access-Control-Allow-Origin: http://origin.domain:port");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Methods: GET, POST");
+header("Access-Control-Allow-Headers: Content-Type, *");
+
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors()); 
