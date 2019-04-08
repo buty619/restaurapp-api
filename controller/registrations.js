@@ -14,11 +14,17 @@ exports.create = (req,res) => {
 }
 
 
-// exports.oauth = (req,res) => { 
-//   //res.post("");
-// }
+exports.oauth = (req,res) => { 
+  const url = "https://accounts.google.com/o/oauth2/v2/auth";
+  const clientID = "646149026943-ph5lbqsa4cru7r32ko8nohqq07q9ishh.apps.googleusercontent.com";
+  const responseType ="code";
+  const scope = "profile-email";
+  const redirect = "https://restaurappapi.herokuapp.com/auth/google/callback";
 
-// exports.oauthcall = (req,res) => { 
-//   console.log(req.access_token);
-//   res.send({});
-// }
+  res.redirect(`${url}?client_id=${clientID}&responce_type=${responseType}&scope=${scope}&redirect_uri=${redirect}`)
+}
+
+exports.oauthcall = (req,res) => { 
+  const code = req.query.code;
+  console.log(code);
+}
