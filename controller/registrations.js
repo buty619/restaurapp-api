@@ -19,12 +19,13 @@ exports.oauth = (req,res) => {
   const clientID = "646149026943-ph5lbqsa4cru7r32ko8nohqq07q9ishh.apps.googleusercontent.com";
   const responseType ="code";
   const scope = "profile+email";
-  const redirect = "https://restaurappapi.herokuapp.com/auth/callback";
+  const redirect = "https://restaurappapi.herokuapp.com/oauth/callback";
 
   res.redirect(`${url}?client_id=${clientID}&response_type=${responseType}&scope=${scope}&redirect_uri=${redirect}`)
 }
 
-exports.oauthcall = (req,res) => { 
+exports.oauthcall = (req,res) => {
+  console.log("holaaaa"); 
   const code = req.query.code;
   console.log(code);
 }
