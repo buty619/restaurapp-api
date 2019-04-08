@@ -11,7 +11,7 @@ const session = require("./controller/session");
 // ------   registration  -------  //
 router.post("/register",registrations.create);
 router.get("/oauth", registrations.oauth);
-router.get("/oauth/google/callback", registrations.oauthcall);
+router.get("/oauth/callback", registrations.oauthcall);
 
 
 // ------   Session  -------  //

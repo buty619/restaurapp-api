@@ -19,7 +19,7 @@ exports.oauth = (req,res) => {
   const clientID = "646149026943-ph5lbqsa4cru7r32ko8nohqq07q9ishh.apps.googleusercontent.com";
   const responseType ="code";
   const scope = "profile-email";
-  const redirect = "https://restaurappapi.herokuapp.com/auth/google/callback";
+  const redirect = "https://restaurappapi.herokuapp.com/auth/callback";
 
   res.redirect(`${url}?client_id=${clientID}&responce_type=${responseType}&scope=${scope}&redirect_uri=${redirect}`)
 }
