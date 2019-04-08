@@ -8,7 +8,8 @@ var restauratSchema = mongoose.Schema({
   url1: String,
   url2: String,
   url3: String,
-  fav:  Boolean
+  lat:  String,
+  lng: String
 });
 
 module.exports = mongoose.model("Restaurant", restauratSchema);
