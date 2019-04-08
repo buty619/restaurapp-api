@@ -21,7 +21,7 @@ exports.oauth = (req,res) => {
   const scope = "profile-email";
   const redirect = "https://restaurappapi.herokuapp.com/auth/callback";
 
-  res.redirect(`${url}?client_id=${clientID}&responce_type=${responseType}&scope=${scope}&redirect_uri=${redirect}`)
+  res.redirect(`${url}?client_id=${clientID}&response_type=${responseType}&scope=${scope}&redirect_uri=${redirect}`)
 }
 
 exports.oauthcall = (req,res) => { 
