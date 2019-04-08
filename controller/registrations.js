@@ -24,8 +24,20 @@ exports.oauth = (req,res) => {
   res.redirect(`${url}?client_id=${clientID}&response_type=${responseType}&scope=${scope}&redirect_uri=${redirect}`)
 }
 
-exports.oauthcall = (req,res) => {
-  console.log("holaaaa"); 
+exports.oauthcall = async (req,res) => {
   const code = req.query.code;
-  console.log(code);
+  const peticion = {
+    code:code,
+    client_id : "646149026943-ph5lbqsa4cru7r32ko8nohqq07q9ishh.apps.googleusercontent.com",
+    client_secret: "7Vxg4-1-aRE1Pj9mmejKK0U_",
+    redirect_uri:"https://restaurappapi.herokuapp.com/oauth/callback",
+    grand_type: "authorization_code"
+  }
+  let data  = await fetch("https://oauth2.googleapis.com/token",{
+    method: "POST",
+    body: JSON.stringify(peticion)
+  })
+
+  token = await data.json(); 
+  console.log(token);
 }
