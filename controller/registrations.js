@@ -17,7 +17,7 @@ exports.create = (req,res) => {
 
 exports.oauth = (req,res) => { 
   const url = "https://accounts.google.com/o/oauth2/v2/auth";
-  const clientID = "646149026943-ph5lbqsa4cru7r32ko8nohqq07q9ishh.apps.googleusercontent.com";
+  const clientID = process.env.GOOGLE_OAUTH_CLIENTID;
   const responseType ="code";
   const scope = "profile+email";
   const redirect = "https://restaurappapi.herokuapp.com/oauth/callback";
@@ -29,8 +29,8 @@ exports.oauthcall = async (req,res) => {
   const code = req.query.code;
   const peticion = {
     code:code,
-    client_id : "646149026943-ph5lbqsa4cru7r32ko8nohqq07q9ishh.apps.googleusercontent.com",
-    client_secret: "7Vxg4-1-aRE1Pj9mmejKK0U_",
+    client_id : process.env.GOOGLE_OAUTH_CLIENTID,
+    client_secret: process.env.GOOGLE_OAUTH_CLIENTSECRET,
     redirect_uri:"https://restaurappapi.herokuapp.com/oauth/callback",
     grant_type: "authorization_code"
   }
