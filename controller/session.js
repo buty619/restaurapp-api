@@ -16,6 +16,7 @@ exports.create =  async function(req, res, next) {
       res.status(401).send({});
     }
   } catch (err) {
+    console.log(err);
     res.status(400).send({ error: 'Authentication failed.' });
   }
 }
