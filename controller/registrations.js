@@ -50,8 +50,13 @@ exports.oauthcall = async (req,res) => {
   userNickname = credentials.names[0].givenName;
 
   const hash = bcrypt.hashSync(1234);
+  try{
+    findUser = await findOne({email:userEmail});
+  }catch(error){
+    console.log(error);
+  }
   
-  findUser = await findOne({email:userEmail})
+  
 
   if(findUser){
     res.status(204).send({msg: "usuario ya existe"});
