@@ -32,7 +32,7 @@ exports.oauthcall = async (req,res) => {
     client_id : "646149026943-ph5lbqsa4cru7r32ko8nohqq07q9ishh.apps.googleusercontent.com",
     client_secret: "7Vxg4-1-aRE1Pj9mmejKK0U_",
     redirect_uri:"https://restaurappapi.herokuapp.com/oauth/callback",
-    grand_type: "authorization_code"
+    grant_type: "authorization_code"
   }
   let data  = await fetch("https://oauth2.googleapis.com/token",{
     method: "POST",
