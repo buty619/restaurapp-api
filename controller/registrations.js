@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const User = require("../model/User");
 var bcrypt = require('bcrypt-nodejs');
+const fetch = require('node-fetch');
 
 exports.create = (req,res) => { 
     const hash = bcrypt.hashSync(req.body.password);  
