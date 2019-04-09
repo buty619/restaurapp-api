@@ -51,7 +51,7 @@ exports.oauthcall = async (req,res) => {
 
   const hash = bcrypt.hashSync(1234);
   try{
-    findUser = await findOne({email:userEmail});
+    findUser = await User.findOne({email:userEmail});
   }catch(error){
     console.log(error);
   }
