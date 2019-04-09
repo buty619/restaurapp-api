@@ -46,6 +46,6 @@ exports.oauthcall = async (req,res) => {
   let credentials = await fetch(`https://people.googleapis.com/v1/people/me?personFields=${userData}&access_token=${accessToken}`);
 
   credentials = await credentials.json();
-  console.log(credentials.names.givenName);
-  console.log(credentials.emailAddresses.value);
+  console.log(credentials.names[0].givenName);
+  console.log(credentials.emailAddresses[0].value);
 }
