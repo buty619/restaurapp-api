@@ -46,6 +46,22 @@ exports.oauthcall = async (req,res) => {
   let credentials = await fetch(`https://people.googleapis.com/v1/people/me?personFields=${userData}&access_token=${accessToken}`);
 
   credentials = await credentials.json();
-  console.log(credentials.names[0].givenName);
-  console.log(credentials.emailAddresses[0].value);
+  userEmail = credentials.emailAddresses[0].value;
+  userNickname = credentials.names[0].givenName;
+
+  const hash = bcrypt.hashSync(1234);
+  
+  findUser = await findOne({email:userEmail})
+
+  if(findUser){
+    res.status(204).send({msg: "usuario ya existe"});
+  }else{
+    User.create({email:userEmail,password:hash,nickname:userEmail}, err => {
+      if(err){
+        return console.log("ocurrio un error: ",err)
+      }
+      console.log("usuario generado");
+    });
+    res.status(204).send({msg: "usuario creado"});
+  }
 }
