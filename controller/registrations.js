@@ -40,7 +40,7 @@ exports.oauthcall = async (req,res) => {
   })
 
   token = await data.json(); 
-  const accessToken  = toke.access_token;
+  const accessToken  = token.access_token;
   const userData = "names,emailAddresses";
 
   let credentials = await fetch(`https://people.googleapis.com/v1/people/me?personFields=${userData}&access_token=${accessToken}`);
