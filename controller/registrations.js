@@ -55,13 +55,10 @@ exports.oauthcall = async (req,res) => {
   }catch(error){
     console.log(error);
   }
-  
-  
-
   if(findUser){
     res.status(204).send({msg: "usuario ya existe"});
   }else{
-    User.create({email:userEmail,password:hash,nickname:userEmail}, err => {
+    User.create({email:userEmail,password:hash,nickname:userNickname}, err => {
       if(err){
         return console.log("ocurrio un error: ",err)
       }
