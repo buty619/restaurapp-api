@@ -9,7 +9,7 @@ exports.create =  async function(req, res, next) {
   try {
     const user = await User.authenticate(auth, password);
     if (user) {
-      const token = await jwt.sing({user:user._id},"secret key")
+      const token = await jwt.sign({user:user._id},"secret key")
       res.json({token});
       res.status(204).send({msg : 'ok log in'});
     } else {
