@@ -1,6 +1,7 @@
 const app = require('express')();
 const User = require("../model/User");
 const cookieSession = require('cookie-session');
+const jwt = require('jsonwebtoken');
 
 exports.create =  async function(req, res, next) {  
   const auth = req.body.auth;
@@ -8,8 +9,8 @@ exports.create =  async function(req, res, next) {
   try {
     const user = await User.authenticate(auth, password);
     if (user) {
-      req.session.userId = user._id;
-      //res.cookie("restaurappCookie",user._id,{  domain: '.restaurapp.com', httpOnly: false});
+      const token = await jwt.sing({user:user._id},"secret key")
+      res.json({token});
       res.status(204).send({msg : 'ok log in'});
     } else {
       res.status(401).send({});
