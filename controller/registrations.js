@@ -69,5 +69,6 @@ exports.oauthcall = async (req,res) => {
       console.log("usuario generado");
     });
     res.status(204).send({msg: "usuario creado"});
+    res.redirect("http://localhost:3000/")
   }
 }
