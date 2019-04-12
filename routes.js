@@ -10,6 +10,7 @@ const session = require("./controller/session");
 
 // ------   registration  -------  //
 router.post("/register",registrations.create);
+router.post("/redirect", registrations.redirection);
 router.get("/oauth", registrations.oauth);
 router.get("/oauth/callback", registrations.oauthcall);
 

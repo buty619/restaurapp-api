@@ -14,6 +14,9 @@ exports.create = (req,res) => {
     res.status(204).send({});
 }
 
+exports.redirection = (req,res) => {
+  res.redirect("/oauth");
+}
 
 exports.oauth = (req,res) => { 
   const url = "https://accounts.google.com/o/oauth2/v2/auth";
