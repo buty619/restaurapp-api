@@ -60,6 +60,7 @@ exports.oauthcall = async (req,res) => {
   }
   if(findUser){
     console.log("usuario ya existe");
+    res.redirect("http://localhost:3000/")
     res.status(204).send({msg: "usuario ya existe"});
   }else{
     User.create({email:userEmail,password:hash,nickname:userNickname}, err => {
